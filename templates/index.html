@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GestionFilm - Accueil</title>
+
+    <!-- CSS local Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+
+<section>
+    <nav class="navbar">
+        <div class="logo">
+            <h1>App<span>Film</span></h1>
+        </div>
+        <div class="right">
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="#">Films</a></li>
+                <li><a href="#">Mes Notes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+
+            <!-- Film 1 -->
+            <div class="swiper-slide">
+                <div class="image">
+                    <img src="{{ url_for('static', filename='images_couv/avatar.jpg') }}" alt="Avatar 3">
+                    <div class="black">
+                        <h1>Avatar 3</h1>
+                        <div class="stars">
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <p>
+                            Dans ce troisième volet de la saga Avatar, Pandora continue de nous émerveiller
+                            avec ses paysages spectaculaires et ses aventures captivantes.
+                        </p>
+                        <div class="genre">
+                            <a href="#" class="category">Action</a>
+                            <a href="#" class="category">Drama</a>
+                            <a href="#" class="category">4K</a>
+                        </div>
+                        <a href="#" class="voir-plus">Voir plus</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Film 2 -->
+            <div class="swiper-slide">
+                <div class="image">
+                    <img src="{{ url_for('static', filename='images/fnaf2.jpg') }}" alt="FNAF 2">
+                    <div class="black">
+                        <h1>Five Night At Freddy 2</h1>
+                        <div class="stars">
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <p>Lorem ipsum...</p>
+                        <div class="genre">
+                            <a href="#" class="category">Action</a>
+                            <a href="#" class="category">Horror</a>
+                            <a href="#" class="category">4K</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
+
+</body>
+</html>

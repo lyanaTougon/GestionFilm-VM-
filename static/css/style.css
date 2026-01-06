@@ -1,0 +1,211 @@
+/* ===== Reset et styles globaux ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html, body {
+    height: 100%;
+    background: #171717; /* fond gris foncé */
+}
+
+/* ===== Sections ===== */
+section {
+    width: 100%;
+    height: 100vh;
+    background: #171717;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: #1c1c1c; /* couleur de la navbar */
+}
+
+.navbar .logo h1 {
+    font-size: 25px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
+
+.navbar .right ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar .right ul li a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar .right ul li a:hover,
+.navbar .right ul li a.active {
+    color: #6200ff; /* violet cohérent avec ton thème */
+}
+
+
+.swiper {
+    width: 95%;
+    height: 95%;
+    border-radius: 20px;
+    overflow: hidden;
+
+}
+.swiper::selection {
+    user-select: none;
+
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+.swiper-slide .image .black {
+  position: absolute;
+  top: 0;          /* Texte en haut */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
+  color: #fff;
+  padding: 50px 5%;  /* Ajuste la marge du texte */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* texte en haut */
+}
+
+/* Titre et étoiles */
+.swiper-slide .image .black h1 {
+  font-size: 30px;
+  text-align: left;
+  position: relative;
+  top: 60%;
+  left: 5%;
+  color: #fff;
+
+
+}
+
+.swiper-slide .image .black .stars {
+    color: antiquewhite;
+    text-align: left;
+    font-size: 16px;
+    margin: 10px 0;
+    position: relative;
+    top: 60%;
+    left: 5%;
+
+ 
+}
+
+.swiper-slide .image .black p {
+    width: 550px;
+    text-align: justify;
+    font-size: 16px;
+    color: #cccccc;
+    margin: 10px 0;
+    position: relative;
+    top: 60%;
+    left: 5%;
+    line-height: 23px;
+}
+    
+
+
+.swiper-slide .image .black .genre {
+    text-align: left;
+    font-size: 16px;
+    margin: 13px 0;
+    position: relative;
+    top: 60%;
+    left: 5%;
+}
+.swiper-slide .image .black .genre .category {
+    background: #282931;
+    text-decoration: none;
+    color: #cccccc;
+    padding: 2px 7px;
+}
+
+.swiper-slide .image .black .watch {
+    width: 700px;
+    text-align: left;
+    display: flex;
+    font-size: 16px;
+    margin: 10px 0;
+    position: relative;
+    top: 60%;
+    left: 5%;
+}
+.swiper-slide .image .black .watch i {
+  width: 37px;
+  height: 37px;
+  line-height: 40px;
+  font-size: 20px;
+  text-align: center;
+  background-color: #0099ff;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -15px;
+  
+
+}
+
+.swiper-slide .image .black .watch a.category span {
+    color: #cccccc;  
+}
+
+.swiper-slide .image .black .watch p {
+    margin: 0;
+    font-family: sans-serif;
+    display: inline-block;
+    vertical-align: middle;
+     font-size: 17px;
+    margin-top: -22px;  /* remonte le texte légèrement */
+}
+
+/* Bouton Voir plus */
+.swiper-slide .image .black .voir-plus {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: #1100ff; /* violet */
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.swiper-slide .image .black .voir-plus:hover {
+    background-color: #1f124e; /* violet plus foncé au hover */
+}
+
+
+
+/*----------------------------/* Swiper navigation buttons */
