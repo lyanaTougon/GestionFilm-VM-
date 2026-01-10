@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Films</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/film.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>    
+
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>App<span>Film</span></h1>
+        </div>
+        <div class="right">
+            <ul>
+		<li><a href="{{ url_for('index') }}">Home</a></li>
+		<li><a href="{{ url_for('films_page') }}" class="active">Films</a></li>
+		<li><a href="{{ url_for('mesnotes') }}">Mes Notes</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Section Films -->
+    <section class="film-section">
+        <h2>FILMS</h2>
+
+        <!-- Barre de recherche -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Rechercher un film...">
+        </div>
+
+        <!-- Grille des films -->
+        <div class="movie-grid" id="movieGrid">
+
+            <div class="movie-card" data-title="Avatar 3">
+    <a href="films/avatar.html"><img src="avatar.jpg" alt="Avatar 3"></a>
+</div>
+
+
+            <div class="movie-card" data-title="Avengers Infinity War">
+                <a href="films/avengers_infinity_war.html"><img src="Films/avengers_infinity_war.jpg" alt="Avengers Infinity War"></a>
+            </div>
+
+            <div class="movie-card" data-title="Spider-Man: New Generation">
+                <a href="films/spiderman.html"><img src="spiderman.jpg" alt="Spider-Man: New Generation"></a>
+            </div>
+
+            <div class="movie-card" data-title="Kung Fu Panda 2">
+                <a href="films/kungfupanda.html "><img src="kunfupanda.webp" alt="Kung Fu Panda 2"></a>
+            </div>
+
+            <div class="movie-card" data-title="Mission impossible : Fallout">
+                <a href="films/missionimpossible.html"><img src="missionimpossible.jpg" alt="Mission impossible : Fallout"></a>
+            </div>
+
+             <div class="movie-card" data-title="Black Adam">
+            <a href="films/blackadam.html"><img src="blackadam.jpg" alt="Black Adam"></a>
+        </div>
+
+        <div class="movie-card" data-title="Doctor Strange in the Multiverse of Madness">
+            <a href="films/doctor_strange.html"><img src="doctor_strange.jpg" alt="Doctor Strange"></a>
+        </div>
+
+        <div class="movie-card" data-title="Guardians of the Galaxy Vol. 3">
+            <a href="films/guardians3.html"><img src="guardians3.jpg" alt="Guardians of the Galaxy 3"></a>
+        </div>
+
+        <div class="movie-card" data-title="The Batman">
+            <a href="films/batman.html"><img src="batman.jpg" alt="The Batman"></a>
+        </div>
+
+        <div class="movie-card" data-title="Iron Man">
+            <a href="films/ironman.html"><img src="ironman.jpg" alt="Iron Man"></a>
+        </div>
+
+        <div class="movie-card" data-title="Wonder Woman 1984">
+            <a href="films/wonderwoman.html"><img src="wonderwoman.jpg" alt="Wonder Woman 1984"></a>
+        </div>
+
+        </div>
+    </section>
+
+    <!-- Script de recherche -->
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const movieGrid = document.getElementById('movieGrid');
+        const movieCards = movieGrid.getElementsByClassName('movie-card');
+
+        searchInput.addEventListener('input', function() {
+            const filter = searchInput.value.toLowerCase();
+
+            for (let i = 0; i < movieCards.length; i++) {
+                const title = movieCards[i].dataset.title.toLowerCase();
+                if (title.includes(filter)) {
+                    movieCards[i].style.display = '';
+                } else {
+                    movieCards[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

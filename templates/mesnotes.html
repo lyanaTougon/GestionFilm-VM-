@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Notes - AppFilm</title>
+
+<!-- CSS locaux -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mesnotes.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>App<span>Film</span></h1>
+        </div>
+        <div class="right">
+            <ul>
+		<li><a href="{{ url_for('index') }}">Home</a></li>
+    		<li><a href="{{ url_for('films_page') }}">Films</a></li>
+    		<li><a href="{{ url_for('mesnotes') }}" class="active">Mes Notes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="notes-section">
+        <div class="container">
+            <h2>Mes Notes</h2>
+
+            <!-- Formulaire pour noter un film -->
+            <form id="noteForm">
+                <label for="filmName">Nom du film :</label>
+                <input type="text" id="filmName" placeholder="Ex: Avatar 3" list="filmsList" required>
+                <datalist id="filmsList"></datalist>
+
+                <label for="filmRating">Note (1 à 5) :</label>
+                <select id="filmRating" required>
+                    <option value="">--Choisir--</option>
+                    <option value="1">1 ⭐</option>
+                    <option value="2">2 ⭐</option>
+                    <option value="3">3 ⭐</option>
+                    <option value="4">4 ⭐</option>
+                    <option value="5">5 ⭐</option>
+                </select>
+
+                <button type="submit">Ajouter la note</button>
+            </form>
+
+            <p id="errorMsg" style="color:#ff4d4d; margin-top:5px;"></p>
+
+            <hr>
+
+            <!-- Liste des notes -->
+            <div id="notesList">
+                <h3>Vos films notés :</h3>
+                <ul id="notesUl"></ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ✅ Liste des films disponibles
+        const validFilms = [
+            "Avatar 3",
+            "Five Night At Freddy 2",
+            "Inception",
+            "Titanic"
+            // ajoute ici d'autres films disponibles
+        ];
+
+        // Remplir le datalist automatiquement
+        const filmsList = document.getElementById('filmsList');
+        validFilms.forEach(film => {
+            const option = document.createElement('option');
+            option.value = film;
+            filmsList.appendChild(option);
+        });
+
+        // Récupérer et sauvegarder les notes
+        function getNotes() {
+            const notes = localStorage.getItem('mesNotes');
+            return notes ? JSON.parse(notes) : [];
+        }
+
+        function saveNotes(notes) {
+            localStorage.setItem('mesNotes', JSON.stringify(notes));
+        }
+
+        // Supprimer une note
+        function removeNote(index) {
+            const notes = getNotes();
+            notes.splice(index, 1);
+            saveNotes(notes);
+            displayNotes();
+        }
+
+        // Afficher les notes avec bouton supprimer
+        function displayNotes() {
+            const notes = getNotes();
+            const notesUl = document.getElementById('notesUl');
+            notesUl.innerHTML = '';
+            if(notes.length === 0) {
+                notesUl.innerHTML = '<li>Aucune note pour le moment.</li>';
+            } else {
+                notes.forEach((note, index) => {
+                    const li = document.createElement('li');
+                    li.textContent = `${note.film} - ${note.rating} ⭐`;
+
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.textContent = "Supprimer";
+                    deleteBtn.style.marginLeft = "10px";
+                    deleteBtn.style.backgroundColor = "#ff4d4d";
+                    deleteBtn.style.color = "#fff";
+                    deleteBtn.style.border = "none";
+                    deleteBtn.style.borderRadius = "5px";
+                    deleteBtn.style.cursor = "pointer";
+                    deleteBtn.style.padding = "3px 7px";
+                    deleteBtn.addEventListener('click', () => removeNote(index));
+
+                    li.appendChild(deleteBtn);
+                    notesUl.appendChild(li);
+                });
+            }
+        }
+
+        // Gestion du formulaire
+        const noteForm = document.getElementById('noteForm');
+        const errorMsg = document.getElementById('errorMsg');
+
+        noteForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const filmName = document.getElementById('filmName').value.trim();
+            const filmRating = document.getElementById('filmRating').value;
+
+            if (!validFilms.includes(filmName)) {
+                errorMsg.textContent = "Film invalide !";
+                return;
+            }
+
+            const notes = getNotes();
+            notes.push({ film: filmName, rating: filmRating });
+            saveNotes(notes);
+            displayNotes();
+            noteForm.reset();
+            errorMsg.textContent = "";
+        });
+
+        // Affichage initial
+        displayNotes();
+    </script>
+</body>
+</html>
+
+

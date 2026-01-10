@@ -25,8 +25,9 @@
         <div class="right">
             <ul>
                 <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="#">Films</a></li>
-                <li><a href="#">Mes Notes</a></li>
+		<li><a href="{{ url_for('films_page') }}" class="active">Films</a></li>
+  		<li><a href="{{ url_for('mesnotes') }}">Mes Notes</a></li>
+
             </ul>
         </div>
     </nav>
