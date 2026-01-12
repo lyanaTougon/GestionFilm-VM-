@@ -64,11 +64,21 @@ a {
 
 .movie-card {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     border-radius: 10px;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
+    text_align: center;
 }
+
+.movie-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;  /* espace entre titre et image */
+    color: #fff;          /* couleur du texte, à adapter selon fond */
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7); /* pour lisibilité */
+}
+
 
 .movie-card img {
     width: 100%;

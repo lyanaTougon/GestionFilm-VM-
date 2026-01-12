@@ -38,16 +38,21 @@
         </div>
 
         <!-- Grille des films -->
-        <div class="movie-grid" id="movieGrid">
-            {% for film in films %}
-            <div class="movie-card" data-title="{{ film.title }}">
-		<a href="{{ film.link }}">
-<img src="{{ url_for('static', filename='images_couv/' ~ film.image) }}" alt="{{ film.title }}" width="150">
-		</a>
 
-            </div>
-            {% endfor %}
+<div class="movie-grid" id="movieGrid">
+    {% for film in films %}
+    <div class="movie-card" data-title="{{ film.titre }}">
+        <!-- Titre centré -->
+        <div class="movie-title-wrapper">
+            <h3 class="movie-title">{{ film.titre }}</h3>
         </div>
+        <a href="{{ film.lien }}">
+            <img src="{{ url_for('static', filename='images_couv/' ~ film.image) }}" alt="{{ film.titre }}">
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
     </section>
 
     <!-- Script de recherche -->
